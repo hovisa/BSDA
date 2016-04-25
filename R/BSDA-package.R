@@ -5683,22 +5683,18 @@ NULL
 #' \describe{ 
 #' \item{distance}{a numeric vector}
 #' \item{magnesiu}{a numeric vector} 
-#' \item{SRES1}{a numeric vector} 
-#' \item{FITS1}{a numeric vector} 
 #' }
 #' @references Kitchens, L. J. (2003) \emph{Basic Statistics and Data Analysis}.
 #' Duxbury
 #' @keywords datasets
 #' @examples
-#' 
-#' str(Magnesiu)
-#' attach(Magnesiu)
-#' model <- lm(magnesiu~distance)
-#' plot(distance,magnesiu)
+#'
+#' str(Mangesiu) 
+#' model <- lm(magnesiu~distance,data=Magnesiu)
+#' plot(distance,magnesiu,data=Magnesiu)
 #' abline(model)
 #' summary(model)
-#' detach(Magnesiu)
-#' remove(model)
+#' rm(model)
 #' 
 NULL
 
@@ -5723,9 +5719,7 @@ NULL
 #' @examples
 #' 
 #' str(Malpract)
-#' attach(Malpract)
-#' SIGN.test(award,conf.level=.90)
-#' detach(Malpract)
+#' SIGN.test(award,conf.level=.90,data=Malpract)
 #' 
 NULL
 
@@ -5750,10 +5744,8 @@ NULL
 #' @examples
 #' 
 #' str(Manager)
-#' attach(Manager)
-#' stem(salary)
-#' SIGN.test(salary)
-#' detach(Manager)
+#' stem(Manager$salary)
+#' SIGN.test(Manager$salary)
 #' 
 NULL
 
@@ -5778,11 +5770,9 @@ NULL
 #' @examples
 #' 
 #' str(Marked)
-#' attach(Marked)
-#' EDA(percent)
-#' t.test(percent,mu=60,alternative="greater")
-#' SIGN.test(percent,md=60,alternative="greater")
-#' detach(Marked)
+#' EDA(percent,data=Marked)
+#' t.test(Marked$percent,mu=60,alternative="greater")
+#' SIGN.test(Marked$percent,md=60,alternative="greater")
 #' 
 NULL
 
@@ -5808,10 +5798,8 @@ NULL
 #' @examples
 #' 
 #' str(Mathcomp)
-#' attach(Mathcomp)
-#' stem(score)
-#' EDA(score)
-#' detach(Mathcomp)
+#' stem(score,data=Mathcomp)
+#' EDA(score,data=Mathcomp)
 #' 
 NULL
 
@@ -5828,34 +5816,19 @@ NULL
 #' @docType data
 #' @format A data frame with 51 observations on the following 10 variables.
 #' \describe{ 
-#' \item{state1}{a factor with levels \code{} \code{Conn}
+#' \item{state}{a factor with levels \code{} \code{Conn}
 #' \code{D.C.} \code{Del} \code{Ga} \code{Hawaii} \code{Ind} \code{Maine}
 #' \code{Mass} \code{Md} \code{N.C.} \code{N.H.} \code{N.J.} \code{N.Y.}
-#' \code{Ore} \code{Pa} \code{R.I.} \code{S.C.} \code{Va} \code{Vt}}
-#' \item{Sat.M1}{a numeric vector} 
-#' \item{Profic1}{a numeric vector} 
-#' \item{state2}{a factor with levels \code{} \code{Ala}
+#' \code{Ore} \code{Pa} \code{R.I.} \code{S.C.} \code{Va} \code{Vt} \code{Ala}
 #' \code{Alaska} \code{Ariz} \code{Ark} \code{Calif} \code{Colo} \code{Fla}
 #' \code{Idaho} \code{Ill} \code{Iowa} \code{Kan} \code{Ky} \code{La}
 #' \code{Mich} \code{Minn} \code{Miss} \code{Mo} \code{Mont} \code{N.D.}
 #' \code{N.M.} \code{Neb} \code{Nev} \code{Ohio} \code{Okla} \code{S.D.}
 #' \code{Tenn} \code{Texas} \code{Utah} \code{W.V.} \code{Wash} \code{Wis}
-#' \code{Wyo}} 
-#' \item{Sat.M2}{a numeric vector} 
-#' \item{Profic2}{a numeric vector} 
-#' \item{state}{a factor with levels \code{Ala}
-#' \code{Alaska} \code{Ariz} \code{Ark} \code{Calif} \code{Colo} \code{Conn}
-#' \code{D.C.} \code{Del} \code{Fla} \code{Ga} \code{Hawaii} \code{Idaho}
-#' \code{Ill} \code{Ind} \code{Iowa} \code{Kan} \code{Ky} \code{La}
-#' \code{Maine} \code{Mass} \code{Md} \code{Mich} \code{Minn} \code{Miss}
-#' \code{Mo} \code{Mont} \code{N.C.} \code{N.D.} \code{N.H.} \code{N.J.}
-#' \code{N.M.} \code{N.Y.} \code{Neb} \code{Nev} \code{Ohio} \code{Okla}
-#' \code{Ore} \code{Pa} \code{R.I.} \code{S.C.} \code{S.D.} \code{Tenn}
-#' \code{Texas} \code{Utah} \code{Va} \code{Vt} \code{W.V.} \code{Wash}
-#' \code{Wis} \code{Wyo}} 
-#' \item{Sat.M}{a numeric vector}
-#' \item{Profic}{a numeric vector} 
-#' \item{Group}{a numeric vector} 
+#' \code{Wyo}}
+#' \item{sat-m}{a numeric vector} 
+#' \item{profic}{a numeric vector} 
+#' \item{group}{a numeric vector} 
 #' }
 #' @references Kitchens, L. J. (2003) \emph{Basic Statistics and Data Analysis}.
 #' Duxbury
@@ -5863,13 +5836,11 @@ NULL
 #' @examples
 #' 
 #' str(Mathpro)
-#' attach(Mathpro)
-#' model <- lm(Sat.M1~Profic1)
-#' plot(Profic1,Sat.M1)
+#' model <- lm(sat-m~profic,data=Mathpro)
+#' plot(profic1,sat-m,data=Mathpro)
 #' abline(model)
 #' model
-#' detach(Mathpro)
-#' remove(model)
+#' rm(model)
 #' 
 NULL
 
@@ -5882,7 +5853,7 @@ NULL
 #' Data for Exercise 1.69
 #' 
 #' 
-#' @name MATH
+#' @name Math
 #' @docType data
 #' @format A data frame with 30 observations on the following variable.
 #' \describe{ 
@@ -5893,12 +5864,10 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
-#' str(MATH)
-#' attach(MATH)
-#' hist(math,col="pink")
-#' CharlieZ <- (62-mean(math))/sd(math)
+#' str(Math)
+#' hist(Math$math,col="pink")
+#' CharlieZ <- (62-mean(math))/sd(math),data=Math
 #' CharlieZ
-#' detach(MATH)
 #' remove(CharlieZ)
 #' 
 NULL
@@ -5916,13 +5885,9 @@ NULL
 #' @docType data
 #' @format A data frame with 32 observations on the following 6 variables.
 #' \describe{ 
-#' \item{CondA}{a numeric vector} 
-#' \item{CondB}{a numeric vector} 
-#' \item{CondC}{a numeric vector}
-#' \item{CondD}{a numeric vector} 
 #' \item{score}{a numeric vector} 
-#' \item{condition}{a factor with levels \code{CondA}
-#' \code{CondB} \code{CondC} \code{CondD}} 
+#' \item{condition}{a factor with levels \code{A}
+#' \code{B} \code{C} \code{D}} 
 #' }
 #' @references Kitchens, L. J. (2003) \emph{Basic Statistics and Data Analysis}.
 #' Duxbury
@@ -5930,10 +5895,8 @@ NULL
 #' @examples
 #' 
 #' str(Maze)
-#' attach(Maze)
-#' boxplot(score~condition)
-#' anova(lm(score~condition))
-#' detach(Maze)
+#' boxplot(score~condition,data=Maze)
+#' anova(lm(score~condition,data=Maze))
 #' 
 NULL
 
@@ -5950,24 +5913,17 @@ NULL
 #' @docType data
 #' @format A data frame with 15 observations on the following 3 variables.
 #' \describe{ 
-#' \item{Sample1}{a numeric vector} 
-#' \item{Sample2}{a numeric vector} 
-#' \item{Sample3}{a numeric vector} 
+#' \item{median}{a numeric vector} 
+#' \item{sample}{a numeric vector} 
 #' }
 #' @references Kitchens, L. J. (2003) \emph{Basic Statistics and Data Analysis}.
 #' Duxbury
 #' @keywords datasets
 #' @examples
 #' 
-#' str(Median)
-#' attach(Median)
-#' STACKED <-stack(Median)
-#' STACKED[1:5,]
-#' boxplot(values~ind,col=c("red","blue","green"),data=STACKED)
-#' anova(lm(values~ind,data=STACKED))
-#' kruskal.test(values~ind,data=STACKED)
-#' remove(STACKED)
-#' detach(Median)
+#' hist(median,data=Median,main="Histogram of Median Scores")
+#' anova(lm(median~sample,data=Median))
+#' kruskal.test(medain~sample,data=Median)
 #' 
 NULL
 
@@ -5992,9 +5948,7 @@ NULL
 #' @examples
 #' 
 #' str(Mental)
-#' attach(Mental)
-#' SIGN.test(age,md=100)
-#' detach(Mental)
+#' SIGN.test(Mental$age,md=100)
 #' 
 NULL
 
@@ -6018,10 +5972,7 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
-#' str(Mercury)
-#' attach(Mercury)
-#' stem(mercury)
-#' detach(Mercury)
+#' stem(Mercury$mercury)
 #' 
 NULL
 
@@ -6045,11 +5996,9 @@ NULL
 #' @keywords datasets
 #' @examples
 #' 
-#' str(Metrent)
-#' attach(Metrent)
-#' EDA(rent)
-#' t.test(rent,conf.level=.99)$conf
-#' detach(Metrent)
+#' boxplot(Metrent$rent,horizontal=TRUE)
+#' EDA(Metrent$rent)
+#' t.test(Metrent$rent,conf.level=.99)
 #' 
 NULL
 
@@ -6074,10 +6023,8 @@ NULL
 #' @examples
 #' 
 #' str(Miller1)
-#' attach(Miller1)
-#' stem(miller)
-#' stem(miller,scale=2)
-#' detach(Miller1)
+#' stem(miller,data=Miller1)
+#' stem(miller,scale=2,data=Miller1)
 #' 
 NULL
 
@@ -6088,7 +6035,7 @@ NULL
 #' Miller personality test scores for a group of college students applying for
 #' graduate school
 #' 
-#' Data for Example 5.7
+#' Data for Exercise 5.7
 #' 
 #' 
 #' @name Miller
@@ -6103,13 +6050,11 @@ NULL
 #' @examples
 #' 
 #' str(Miller)
-#' attach(Miller)
-#' stem(miller)
-#' fivenum(miller)
-#' boxplot(miller)
-#' qqnorm(miller,col="blue")
-#' qqline(miller,col="red")
-#' detach(Miller)
+#' stem(Miller$miller)
+#' fivenum(Miller$miller)
+#' boxplot(Miller$miller)
+#' qqnorm(Miller$miller,col="blue")
+#' qqline(Miller$miller,col="red")
 #' 
 NULL
 
@@ -6120,7 +6065,7 @@ NULL
 #' Moisture content and depth of core sample for marine muds in eastern
 #' Louisiana
 #' 
-#' Data for Exercise 9.37
+#' Data for Exercise 9.32
 #' 
 #' 
 #' @name Moisture
@@ -6129,8 +6074,6 @@ NULL
 #' \describe{ 
 #' \item{depth}{a numeric vector} 
 #' \item{moisture}{a numeric vector} 
-#' \item{lnmoist}{a numeric vector}
-#' \item{depthsq}{a numeric vector} 
 #' }
 #' @references Kitchens, L. J. (2003) \emph{Basic Statistics and Data Analysis}.
 #' Duxbury
@@ -6138,11 +6081,9 @@ NULL
 #' @examples
 #' 
 #' str(Moisture)
-#' attach(Moisture)
-#' model <- lm(moisture~depth)
+#' model <- lm(moisture~depth,data=Moisture)
 #' plot(depth,resid(model))
-#' detach(Moisture)
-#' remove(model)
+#' rm(model)
 #' 
 NULL
 
@@ -6168,10 +6109,8 @@ NULL
 #' @examples
 #' 
 #' str(Monoxide)
-#' attach(Monoxide)
 #' t.test(manufac,compet)
 #' wilcox.test(manufac,compet)
-#' detach(Monoxide)
 #' 
 NULL
 
